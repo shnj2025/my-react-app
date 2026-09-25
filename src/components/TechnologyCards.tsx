@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import StackSidebar from "./StackSidebar";
+import { toast } from 'react-toastify';
+
 
 type Technology = {
   id: string;
@@ -26,22 +28,28 @@ const TechnologyCards = () => {
       });
   }, []);
 
-  const handleAdd = (tech: Technology) => {
-    const alreadyAdded = stack.some((item) => item.id === tech.id);
-    if (alreadyAdded) {
-      alert(`${tech.name} is already in your stack!`);
-      return;
-    }
-    setStack([...stack, tech]);
-  };
+ const handleAdd = (tech: Technology) => {
+  const alreadyAdded = stack.some((item) => item.id === tech.id);
+  if (alreadyAdded) {
+    toast.warning(`${tech.name} is already in your stack!`);
+    return;
+  }
+  setStack([...stack, tech]);
+  toast.success(`${tech.name} added to your stack!`);
+};
 
-  const handleRemove = (id: string) => {
-    setStack(stack.filter((item) => item.id !== id));
-  };
+const handleRemove = (id: string) => {
+  const removedTech = stack.find((item) => item.id === id);
+  setStack(stack.filter((item) => item.id !== id));
+  if (removedTech) {
+    toast.info(`${removedTech.name} removed from your stack.`);
+  }
+};
 
-  const handleRemoveAll = () => {
-    setStack([]);
-  };
+const handleRemoveAll = () => {
+  setStack([]);
+  toast.info('All technologies removed from your stack.');
+};
 
   if (loading) {
     return <p className="text-center py-10">Loading technologies...</p>;

@@ -6,6 +6,9 @@ import  Banner from "./components/Banner";
 import TechnologyCards from './components/TechnologyCards'
 import Footer from './components/Footer'
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 createRoot(document.getElementById('root')!).render(
@@ -14,5 +17,6 @@ createRoot(document.getElementById('root')!).render(
    <Banner/>
    <TechnologyCards/>
    <Footer />
+   <ToastContainer />
   </StrictMode>,
 )
