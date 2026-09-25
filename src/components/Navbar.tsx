@@ -5,7 +5,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-300">
+       <div className="sticky top-0 z-50 bg-white border-b border-gray-300">
       <nav className="flex justify-between gap-4 container mx-auto py-4 px-4 items-center">
         <button className="md:hidden" onClick={() => setOpen(!open)}>
           <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
