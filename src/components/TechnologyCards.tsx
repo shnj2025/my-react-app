@@ -19,14 +19,16 @@ const TechnologyCards = () => {
   const [loading, setLoading] = useState(true);
   const [stack, setStack] = useState<Technology[]>([]);
 
-  useEffect(() => {
-    fetch("/technologies.json")
-      .then((res) => res.json())
-      .then((data) => {
+ useEffect(() => {
+  fetch("/technologies.json")
+    .then((res) => res.json())
+    .then((data) => {
+      setTimeout(() => {
         setTechnologies(data);
         setLoading(false);
-      });
-  }, []);
+      }, 200);
+    });
+}, []);
 
  const handleAdd = (tech: Technology) => {
   const alreadyAdded = stack.some((item) => item.id === tech.id);
